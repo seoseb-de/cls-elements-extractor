@@ -155,4 +155,4 @@ else:
     st.write('waiting for your go!')
 
 st.markdown('---')
-st.markdown('fiddle by [seoseb](https://www.seoseb.de/) | ')
+st.markdown('fiddled by [seoseb](https://www.seoseb.de/) | [@seoseb](https://twitter.com/seoseb)')
