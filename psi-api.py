@@ -39,6 +39,7 @@ cls_items = []
 ###
 # function for calling API and extracting CLS Elements
 ###
+
 def run_check(url_list):
     run = 0
     progress_max = len(url_list)
@@ -115,20 +116,18 @@ def run_check(url_list):
 ###
 
 # Title for Streamlit App
-
 st.image('https://www.seoseb.de/img/seoseb_icon_x96.png')
 st.title('PSI-API Extractor for CLS Elements')
 
 st.markdown('Check which elements are shifted during page load and how much they contribute to CLS of a given URL'
             ' by uploading a CLS Error Report from Google Search Console')
+st.markdown('---')
 
 st.subheader('Enter your API key*:')
 
 psi_api_key = st.text_input('Your PSI API Key *will not be saved nor transferred elsewhere',
-                            'a long string with characters and digits')
-st.markdown(
-    '_Need an API key? Get yours here: [developers.google.com]('
-    'https://developers.google.com/speed/docs/insights/v5/get-started#APIKey)_')
+                            '')
+
 
 st.subheader('Upload your Search Console CLS error export table')
 st.image('gsc-export-screen.png', caption='This is where you find the file you need: choose Export > Download CSV')
@@ -143,19 +142,19 @@ if uploaded_file is not None:
     for Row in importUrls.index:
         urls_to_check.append(importUrls['URL'][Row])
 
-st.write('You\'re about to check ' + str(len(urls_to_check)) + ' URLs: ')
-st.write(urls_to_check)
+    st.write('You\'re about to check ' + str(len(urls_to_check)) + ' URLs: ')
+    st.write(urls_to_check)
 
-# set request variables
+    # set request variables
 
-device = st.radio('select device type to check pagespeed on: ', ('Mobile', 'Desktop'))
-test_type = 'PERFORMANCE'
-locale = 'de-DE'
+    device = st.radio('select device type to check pagespeed on: ', ('Mobile', 'Desktop'))
+    test_type = 'PERFORMANCE'
+    locale = 'de-DE'
 
-if st.button('Check for CLS Elements'):
-    run_check(urls_to_check)
-else:
-    st.write('waiting for your go!')
+    if st.button('Check for CLS Elements'):
+        run_check(urls_to_check)
+    else:
+        st.write('waiting for your go!')
 
 st.markdown('---')
 st.markdown('_fiddled by [seoseb](https://www.seoseb.de/) | [@seoseb](https://twitter.com/seoseb)_')
