@@ -20,6 +20,16 @@ import requests
 import base64
 import pandas as pd
 
+###########################################
+# page config - must be first st command! #
+###########################################
+
+st.set_page_config(
+    page_title='CLS-Elements Extractor for Page Speed Insights API',
+    page_icon='https://www.seoseb.de/artikel/media/files/favicon-16.png',
+    layout='centered',
+    initial_sidebar_state='auto'
+)
 
 #############
 # variables #
@@ -161,7 +171,6 @@ if uploaded_file is not None:
         run_check(urls_to_check)
     else:
         st.write('waiting for your go!')
-
 
 ##########
 # footer #
